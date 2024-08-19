@@ -9,7 +9,7 @@
   <Identity
     Name="MSEDGE.Clock"
     Publisher="CN=MSEDGE"
-    Version="4.3.20.0" />
+    Version="4.3.21.0" />
 
   <mp:PhoneIdentity PhoneProductId="d7864fe0-f19a-42a4-b870-fdcaab72b9c0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

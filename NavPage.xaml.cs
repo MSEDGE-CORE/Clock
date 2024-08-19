@@ -146,5 +146,43 @@ namespace Clock
             NavTimerButton.IsChecked = true;
             NavSettingsButton.IsChecked = false;
         }
+
+        private void MenuFullScreen_Click(object sender, RoutedEventArgs e)
+        {
+            if(ApplicationView.GetForCurrentView().IsFullScreen)
+            {
+                ApplicationView.GetForCurrentView().ExitFullScreenMode();
+            }
+            else
+            {
+                ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
+            }
+        }
+
+        private void MenuCompact_Click(object sender, RoutedEventArgs e)
+        {
+            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay)
+            {
+                ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+            }
+            else
+            {
+                ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+            }
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay || ApplicationView.GetForCurrentView().IsFullScreen)
+            {
+                NavigationBar.Visibility = Visibility.Collapsed;
+                ContentFrame.Margin = new Thickness(0,-32,0,0);
+            }
+            else
+            {
+                NavigationBar.Visibility = Visibility.Visible;
+                ContentFrame.Margin = new Thickness(0,0,0,68);
+            }
+        }
     }
 }

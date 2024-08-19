@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -294,8 +295,17 @@ namespace Clock
 
         private void Page_SizeChanged(object sender = null, SizeChangedEventArgs e = null)
         {
+            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay || ApplicationView.GetForCurrentView().IsFullScreen)
+            {
+                //StopWatchFlagButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                StopWatchFlagButton.Visibility = Visibility.Visible;
+            }
+
             int RightMargin = 0;
-            if ((ActualWidth <= 680 && ActualHeight - 60 - 32 <= 200) || (Application.Current as App).SwFlagList.Count() == 0)
+            if ((ActualHeight - 60 - 32 <= 200) || (Application.Current as App).SwFlagList.Count() == 0)
             {
                 RightMargin = 1;
                 GridTime.VerticalAlignment = VerticalAlignment.Center;
@@ -387,7 +397,7 @@ namespace Clock
                 GridTime.Margin = new Thickness(0, 32 + TimeDisplay.FontSize / 10.0, 0, 60);
             }
 
-            if ((ActualWidth <= 680 && ActualHeight - 60 - 32 <= 200) || (Application.Current as App).SwFlagList.Count() == 0)
+            if ((ActualHeight - 60 - 32 <= 200) || (Application.Current as App).SwFlagList.Count() == 0)
             {
                 RightMargin = 1;
                 GridTime.VerticalAlignment = VerticalAlignment.Center;

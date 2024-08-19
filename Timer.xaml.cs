@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -237,6 +238,15 @@ namespace Clock
 
         private void Page_SizeChanged(object sender = null, SizeChangedEventArgs e = null)
         {
+            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay)
+            {
+                TimerEditButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TimerEditButton.Visibility = Visibility.Visible;
+            }
+
             if (ActualWidth > 0 && ActualHeight - 60 - 32 > 0)
             {
                 if ((ActualHeight - 60 - 32) / 1.5 > (ActualWidth) / 7)
