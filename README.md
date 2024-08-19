@@ -2,7 +2,8 @@
 下载地址
 1. 蓝奏云：https://msedge.lanzoul.com/b02kwkhfc
 （密码：MSEDGE）
-2. 图标：https://aka.ms/SegoeFluentIcons
+2. 依赖：https://msedge.lanzoul.com/iGrfL27ttpra
+3. 图标：https://aka.ms/SegoeFluentIcons
 
 功能特色
 1. 适用于教室大屏
