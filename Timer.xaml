@@ -44,7 +44,7 @@
             </StackPanel>
 
             <Grid Name="ProgressGrid" Height="56" Visibility="Collapsed">
-                <ProgressBar Name="ProgressBar" Width="276" VerticalAlignment="Top" Margin="0,-5,0,0"/>
+                <muxc:ProgressBar Name="ProgressBar" Width="276" VerticalAlignment="Top" Margin="0,-5,0,0"/>
             </Grid>
         </StackPanel>
 

@@ -295,15 +295,6 @@ namespace Clock
 
         private void Page_SizeChanged(object sender = null, SizeChangedEventArgs e = null)
         {
-            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay || ApplicationView.GetForCurrentView().IsFullScreen)
-            {
-                //StopWatchFlagButton.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                StopWatchFlagButton.Visibility = Visibility.Visible;
-            }
-
             int RightMargin = 0;
             if ((ActualHeight - 60 - 32 <= 200) || (Application.Current as App).SwFlagList.Count() == 0)
             {
@@ -312,7 +303,7 @@ namespace Clock
                 if (ActualWidth <= 680)
                 {
                     ListFlag.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + 200, 0, 0);
+                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + ActualHeight / 2 + 120, 0, 0);
                 }
                 else
                 {
@@ -405,7 +396,7 @@ namespace Clock
                 if (ActualWidth <= 680)
                 {
                     ListFlag.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + 200, 0, 0);
+                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + ActualHeight / 2 + 120, 0, 0);
                 }
                 else
                 {
