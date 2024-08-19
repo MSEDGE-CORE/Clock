@@ -12,9 +12,9 @@
 
     <Grid>
         <Grid Name="GridTime" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <Grid.Transitions>
+            <Grid.Transitions >
                 <TransitionCollection>
-                    <RepositionThemeTransition />
+                    <RepositionThemeTransition x:DefaultBindMode="TwoWay"/>
                 </TransitionCollection>
             </Grid.Transitions>
             <StackPanel Name="PanelTime" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
@@ -23,7 +23,6 @@
                         <RepositionThemeTransition />
                     </TransitionCollection>
                 </StackPanel.Transitions>
-
                 <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" Visibility="Collapsed"/>
                 <Grid Name="GridHour" VerticalAlignment = "Bottom">
                     <TextBlock Name="TextHour" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Collapsed"/>
@@ -48,14 +47,14 @@
             <ListView x:Name="ListFlag" HorizontalAlignment="Right">
                 <ListView.Transitions>
                     <TransitionCollection>
-                        <RepositionThemeTransition />
+                        <RepositionThemeTransition/>
                     </TransitionCollection>
                 </ListView.Transitions>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:SwFlag_List">
                         <Grid>
                             <TextBlock Text="{x:Bind Num}" FontSize="16" Margin="0,0,0,0" HorizontalAlignment="Left" FontFamily="HarmonyOS Sans SC"/>
-                            <TextBlock Text="{x:Bind Total}" FontSize="16" Margin="0,0,32,0" HorizontalAlignment="Center" FontFamily="HarmonyOS Sans SC"/>
+                            <TextBlock Text="{x:Bind Total}" FontSize="16" Margin="0,0,120,0" HorizontalAlignment="Right" FontFamily="HarmonyOS Sans SC"/>
                             <TextBlock Text="{x:Bind Plus}" FontSize="16" Margin="0,0,0,0" HorizontalAlignment="Right" FontFamily="HarmonyOS Sans SC"/>
                         </Grid>
                     </DataTemplate>

@@ -22,16 +22,16 @@
                             <TextBlock Text="时钟" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
                         </StackPanel>
                     </ToggleButton>
-                    <ToggleButton Name="NavStopWatchButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavStopWatchButton_Click" Margin="0,0,4,0">
-                        <StackPanel>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE916;" Margin="4,4,4,4"/>
-                            <TextBlock Text="秒表" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
-                        </StackPanel>
-                    </ToggleButton>
                     <ToggleButton Name="NavTimerButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavTimerButton_Click" Margin="0,0,4,0">
                         <StackPanel>
                             <SymbolIcon Symbol="Play" Margin="4,4,4,4"/>
                             <TextBlock Text="计时" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton Name="NavStopWatchButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavStopWatchButton_Click" Margin="0,0,4,0">
+                        <StackPanel>
+                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE916;" Margin="4,4,4,4"/>
+                            <TextBlock Text="秒表" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
                         </StackPanel>
                     </ToggleButton>
                     <ToggleButton Name="NavFocusButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavFocusButton_Click" Margin="0,0,4,0" Visibility="Collapsed">

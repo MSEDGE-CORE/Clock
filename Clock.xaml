@@ -11,12 +11,6 @@
     SizeChanged="Page_SizeChanged">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,32,0,0">
-        <Grid.Transitions>
-            <TransitionCollection>
-                <RepositionThemeTransition />
-            </TransitionCollection>
-        </Grid.Transitions>
-
         <TextBlock FontFamily = "HarmonyOS Sans SC" FontWeight = "Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" />
     </Grid>
 </Page>

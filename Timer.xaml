@@ -12,22 +12,11 @@
 
     <Grid>
         <StackPanel Name="GridTime" VerticalAlignment="Center" HorizontalAlignment="Stretch" Orientation="Vertical">
-            <StackPanel.Transitions>
-                <TransitionCollection>
-                    <RepositionThemeTransition />
-                </TransitionCollection>
-            </StackPanel.Transitions>
-
             <StackPanel Name="OTimerShow" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Height="56" Visibility="Collapsed">
                 <TextBlock Name="TextO1" FontFamily="HarmonyOS Sans SC" FontWeight="SemiLight" FontSize="36" VerticalAlignment="Bottom"/>
             </StackPanel>
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                <StackPanel.Transitions>
-                    <TransitionCollection>
-                        <RepositionThemeTransition />
-                    </TransitionCollection>
-                </StackPanel.Transitions>
                 <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" Visibility="Collapsed"/>
                 <Grid Name="GridHour" VerticalAlignment = "Bottom">
                     <TextBlock Name="TextHour" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
