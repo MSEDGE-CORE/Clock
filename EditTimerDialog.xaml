@@ -5,40 +5,37 @@
     xmlns:local="using:Clock"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" >
+    mc:Ignorable="d">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Vertical" Loaded="Frame_Loaded" >
         <StackPanel.Resources>
             <Storyboard x:Name="EntranceAnimation">
-                <DoubleAnimation Storyboard.TargetName="Entrance1" Storyboard.TargetProperty="Y" From="100" To="0" Duration="0:0:0.5">
+                <DoubleAnimation Storyboard.TargetName="Entrance1" Storyboard.TargetProperty="Y" From="50" To="0" Duration="0:0:0.3">
                     <DoubleAnimation.EasingFunction>
                         <ExponentialEase Exponent="8" EasingMode="EaseOut" />
                     </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="Entrance2" Storyboard.TargetProperty="Y" From="150" To="0" Duration="0:0:0.5">
+                <DoubleAnimation Storyboard.TargetName="Entrance2" Storyboard.TargetProperty="Y" From="80" To="0" Duration="0:0:0.3">
                     <DoubleAnimation.EasingFunction>
                         <ExponentialEase Exponent="8" EasingMode="EaseOut" />
                     </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="Entrance3" Storyboard.TargetProperty="Y" From="150" To="0" Duration="0:0:0.6">
+                <DoubleAnimation Storyboard.TargetName="Entrance3" Storyboard.TargetProperty="Y" From="100" To="0" Duration="0:0:0.4">
                     <DoubleAnimation.EasingFunction>
                         <ExponentialEase Exponent="8" EasingMode="EaseOut" />
                     </DoubleAnimation.EasingFunction>
-                </DoubleAnimation> 
-                <DoubleAnimation Storyboard.TargetName="Entrance4" Storyboard.TargetProperty="Y" From="200" To="0" Duration="0:0:0.8">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="Entrance4" Storyboard.TargetProperty="Y" From="150" To="0" Duration="0:0:0.5">
                     <DoubleAnimation.EasingFunction>
                         <ExponentialEase Exponent="8" EasingMode="EaseOut" />
                     </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
             </Storyboard>
         </StackPanel.Resources>
-        <TextBlock Text = "注意：仅应用程序处于运行状态时，计时器才生效" FontSize="12" >
+        <TextBlock Text = "注意：仅应用程序处于运行状态时，计时器才生效" FontSize="12" FontFamily="HarmonyOS Sans SC" >
             <TextBlock.RenderTransform>
                 <TranslateTransform x:Name="Entrance1" />
-            </TextBlock.RenderTransform> 
+            </TextBlock.RenderTransform>
         </TextBlock>
         <TextBlock Text = " " FontSize="12" />
         <StackPanel Orientation="Horizontal">
@@ -46,21 +43,20 @@
                 <Grid.RenderTransform>
                     <TranslateTransform x:Name="Entrance2" />
                 </Grid.RenderTransform>
-                <ComboBox Name = "Timer_HourSet" SelectionChanged = "Timer_HourChanged" Header = "时" Width = "100" IsEditable = "False" Loaded = "Hour_Loaded" Margin="6" SelectedIndex="0" />
+                <ComboBox Name = "Timer_HourSet" SelectionChanged = "Timer_HourChanged" Header = "时" Width = "100" IsEditable = "False" Loaded = "Hour_Loaded" Margin="6" SelectedIndex="0" FontSize="32" FontFamily="HarmonyOS Sans SC" />
             </Grid>
             <Grid>
                 <Grid.RenderTransform>
                     <TranslateTransform x:Name="Entrance3" />
                 </Grid.RenderTransform>
-                <ComboBox Name = "Timer_MinuteSet" SelectionChanged = "Timer_MinuteChanged" Header = "分" Width = "100" IsEditable = "False" Loaded = "Minute_Loaded" Margin="6" SelectedIndex="0" />
+                <ComboBox Name = "Timer_MinuteSet" SelectionChanged = "Timer_MinuteChanged" Header = "分" Width = "100" IsEditable = "False" Loaded = "Minute_Loaded" Margin="6" SelectedIndex="0" FontSize="32" FontFamily="HarmonyOS Sans SC" />
             </Grid>
             <Grid>
                 <Grid.RenderTransform>
                     <TranslateTransform x:Name="Entrance4" />
                 </Grid.RenderTransform>
-                <ComboBox Name = "Timer_SecondSet" SelectionChanged = "Timer_SecondChanged" Header = "秒" Width = "100" IsEditable = "False" Loaded = "Second_Loaded" Margin="6" SelectedIndex="0" />
+                <ComboBox Name = "Timer_SecondSet" SelectionChanged = "Timer_SecondChanged" Header = "秒" Width = "100" IsEditable = "False" Loaded = "Second_Loaded" Margin="6" SelectedIndex="0" FontSize="32" FontFamily="HarmonyOS Sans SC" />
             </Grid>
         </StackPanel>
     </StackPanel>
-
 </Page>

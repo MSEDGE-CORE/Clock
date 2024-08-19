@@ -5,37 +5,59 @@
     xmlns:local="using:Clock"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" >
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" 
+    SizeChanged="Page_SizeChanged">
 
     <Grid>
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,88">
-            <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" />
-        </Grid>
+        <StackPanel Name="GridTime" VerticalAlignment="Center" HorizontalAlignment="Stretch" Orientation="Vertical">
+            <StackPanel.Transitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </StackPanel.Transitions>
 
-        <Grid>
-            <Line Name ="SeparateLineLight" Stroke="LightGray" X1="0" X2="100000" StrokeThickness = "0.5" Y1 = "0" Y2 = "0"/>
-            <Line Name ="SeparateLineDark" Stroke="Black" X1="0" X2="100000" StrokeThickness = "0.5" Y1 = "0" Y2 = "0"/>
-        </Grid>
+            <StackPanel Name="OTimerShow" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Height="56" Visibility="Collapsed">
+                <TextBlock Name="TextO1" FontFamily="HarmonyOS Sans SC" FontWeight="SemiLight" FontSize="36" VerticalAlignment="Bottom"/>
+            </StackPanel>
 
-        <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.Transitions>
+                <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" Visibility="Collapsed"/>
+                <Grid Name="GridHour" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextHour" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock Name="TextH1" FontFamily="HarmonyOS Sans SC" Text="时" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom"/>
+                <Grid Name="GridMinute" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextMinute" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock Name="TextH2" FontFamily="HarmonyOS Sans SC" Text="分" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom"/>
+                <Grid Name="GridSecond" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextSecond" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock Name="TextH3" FontFamily="HarmonyOS Sans SC" Text="秒" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom"/>
+            </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "64" Height="64" Width="64" Click="Timer_Start">
+            <Grid Name="ProgressGrid" Height="56" Visibility="Collapsed">
+                <ProgressBar Name="ProgressBar" Width="276" VerticalAlignment="Top" Margin="0,-5,0,0"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" >
+            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "48" Height="48" Width="48" Name = "TimerStartButton" Click="TimerStartButton_Click" ToolTipService.ToolTip="开始" FontFamily="HarmonyOS Sans SC">
                 <FontIcon Name = "TimerStartButtonIcon" FontFamily = "Segoe Fluent Icons" />
             </Button>
-            <Button CornerRadius = "64" Height="64" Width="64" Name = "TimerEditButton" Click="Timer_Edit" Margin = "12">
+            <Button CornerRadius = "48" Height="48" Width="48" Name = "TimerEditButton" Margin = "12,0,12,0" Click="TimerEditButton_Click" ToolTipService.ToolTip="编辑" FontFamily="HarmonyOS Sans SC">
                 <SymbolIcon Symbol="Edit" />
             </Button>
-            <Button CornerRadius = "64" Height="64" Width="64" Name = "TimerStopButton" Click="Timer_Stop">
+            <Button CornerRadius = "48" Height="48" Width="48" Name = "TimerStopButton" Click="TimerStopButton_Click" ToolTipService.ToolTip="停止" FontFamily="HarmonyOS Sans SC">
                 <SymbolIcon Symbol="Stop" />
             </Button>
-        </StackPanel>
-        
-        <StackPanel x:Name="BackControl" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed">
-            <Button Name="Back" Click="Back_Click" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe Fluent Icons" Content="&#xE112;" FontSize="14" Height="32"/>
         </StackPanel>
     </Grid>
 </Page>

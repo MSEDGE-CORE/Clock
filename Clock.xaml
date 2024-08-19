@@ -5,18 +5,18 @@
     xmlns:local="using:Clock"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" >
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" 
+    SizeChanged="Page_SizeChanged">
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,32,0,0">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <RepositionThemeTransition />
+            </TransitionCollection>
+        </Grid.Transitions>
+
         <TextBlock FontFamily = "HarmonyOS Sans SC" FontWeight = "Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" />
-
-        <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-
-        <StackPanel x:Name="BackControl" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed">
-            <Button Name="Back" Click="Back_Click" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe Fluent Icons" Content="&#xE112;" FontSize="14" Height="32"/>
-        </StackPanel>
     </Grid>
 </Page>

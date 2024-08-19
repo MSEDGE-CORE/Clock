@@ -5,45 +5,74 @@
     xmlns:local="using:Clock"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" >
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" 
+    SizeChanged="Page_SizeChanged">
 
-    
     <Grid>
-        <Grid x:Name="BackGrid" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" />
+        <Grid Name="GridTime" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Grid.Transitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </Grid.Transitions>
+            <StackPanel Name="PanelTime" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.Transitions>
+
+                <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" x:Name = "TimeDisplay"  VerticalAlignment = "Center" HorizontalAlignment = "Center" Visibility="Collapsed"/>
+                <Grid Name="GridHour" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextHour" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                </Grid>
+                <TextBlock Name="TextH1" FontFamily="HarmonyOS Sans SC" Text="时" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+                <Grid Name="GridMinute" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextMinute" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock Name="TextH2" FontFamily="HarmonyOS Sans SC" Text="分" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom"/>
+                <Grid Name="GridSecond" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextSecond" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock Name="TextH3" FontFamily="HarmonyOS Sans SC" Text="秒" FontWeight="Thin" FontSize="50" VerticalAlignment="Bottom"/>
+                <Grid Name="GridMSecond" VerticalAlignment = "Bottom">
+                    <TextBlock Name="TextMSecond" FontFamily="HarmonyOS Sans SC" FontWeight="Bold" FontSize="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+            </StackPanel>
         </Grid>
 
-        <Grid>
-            <Line Name ="SeparateLineLight" Stroke="LightGray" X1="0" X2="100000" StrokeThickness = "0.5" Y1 = "0" Y2 = "0"/>
-            <Line Name ="SeparateLineDark" Stroke="Black" X1="0" X2="100000" StrokeThickness = "0.5" Y1 = "0" Y2 = "0"/>
+        <AppBarSeparator Name="FlagSeparator"  HorizontalAlignment="Right" Margin="0,32,280,0"/>
+        <Grid Name="GridFlag">
+            <ListView x:Name="ListFlag" HorizontalAlignment="Right">
+                <ListView.Transitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </ListView.Transitions>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:SwFlag_List">
+                        <Grid>
+                            <TextBlock Text="{x:Bind Num}" FontSize="16" Margin="0,0,0,0" HorizontalAlignment="Left" FontFamily="HarmonyOS Sans SC"/>
+                            <TextBlock Text="{x:Bind Total}" FontSize="16" Margin="0,0,32,0" HorizontalAlignment="Center" FontFamily="HarmonyOS Sans SC"/>
+                            <TextBlock Text="{x:Bind Plus}" FontSize="16" Margin="0,0,0,0" HorizontalAlignment="Right" FontFamily="HarmonyOS Sans SC"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
 
-        <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        
-        <StackPanel>
-            <Rectangle Name = "Rectangle1" Height="0" StrokeThickness="0" RadiusY="0" RadiusX="0"/>
-            <ScrollViewer Name = "StopWatchFlagsViewer" ZoomMode = "Disabled" IsTabStop = "True" IsVerticalScrollChainingEnabled = "True" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto" VerticalAlignment = "Top">
-                <TextBlock FontFamily="HarmonyOS Sans SC" FontWeight="Normal" FontSize="25" x:Name = "TimeFlag"  VerticalAlignment = "Top" HorizontalAlignment = "Center" />
-            </ScrollViewer>
-        </StackPanel>
-
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "64" Height="64" Width="64" Click="StopWatch_Start">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" >
+            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "48" Height="48" Width="48" Name = "StopWatchStartButton" Click="StopWatchStartButton_Click" ToolTipService.ToolTip="开始" FontFamily="HarmonyOS Sans SC">
                 <FontIcon Name = "StopWatchStartButtonIcon" FontFamily = "Segoe Fluent Icons" />
             </Button>
-            <Button CornerRadius = "64" Height="64" Width="64" Margin="12" Name = "StopWatchFlagButton"  Click="StopWatch_Flag">
-                <FontIcon FontFamily="Segoe Fluent Icons" Glyph = "&#xE129;" />
+            <Button CornerRadius = "48" Height="48" Width="48" Name = "StopWatchFlagButton" Margin = "12,0,12,0" Click="StopWatchFlagButton_Click" ToolTipService.ToolTip="计次" FontFamily="HarmonyOS Sans SC">
+                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE7C1;" />
             </Button>
-            <Button CornerRadius = "64" Height="64" Width="64" Name = "StopWatchStopButton" Click="StopWatch_Stop">
+            <Button CornerRadius = "48" Height="48" Width="48" Name = "StopWatchStopButton" Click="StopWatchStopButton_Click" ToolTipService.ToolTip="停止" FontFamily="HarmonyOS Sans SC">
                 <SymbolIcon Symbol="Stop" />
             </Button>
-        </StackPanel>
-
-        <StackPanel x:Name="BackControl" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed">
-            <Button Name="Back" Click="Back_Click" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe Fluent Icons" Content="&#xE112;" FontSize="14" Height="32"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Clock.NavPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Clock"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True" >
+
+    <Grid>
+        <Frame Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,68"/>
+        <Button Background="Transparent" IsEnabled="False" CornerRadius="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="70" Margin="-2,0,-2,-2"/>
+        <StackPanel Name="NavigationBar" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="68">
+            <ToggleButton Name="NavClockButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavClockButton_Click" Margin="0,0,4,0">
+                <StackPanel>
+                    <SymbolIcon Symbol="Clock" Margin="4,4,4,4"/>
+                    <TextBlock Text="时钟" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Name="NavStopWatchButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavStopWatchButton_Click" Margin="0,0,4,0">
+                <StackPanel>
+                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE916;" Margin="4,4,4,4"/>
+                    <TextBlock Text="秒表" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Name="NavTimerButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavTimerButton_Click" Margin="0,0,4,0">
+                <StackPanel>
+                    <SymbolIcon Symbol="Play" Margin="4,4,4,4"/>
+                    <TextBlock Text="计时" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Name="NavFocusButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavFocusButton_Click" Margin="0,0,4,0" Visibility="Collapsed">
+                <StackPanel>
+                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEA8F;" Margin="4,4,4,4" />
+                    <TextBlock Text="专注" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Name="NavSettingsButton" Background="Transparent" BorderBrush="Transparent" Width="64" Height="60" CornerRadius="8" IsChecked="False" Click="NavSettingsButton_Click">
+                <StackPanel>
+                    <SymbolIcon Symbol="Setting" Margin="4,4,4,4"/>
+                    <TextBlock Text="设置" HorizontalAlignment="Center" FontSize="12" FontFamily="HarmonyOS Sans SC"/>
+                </StackPanel>
+            </ToggleButton>
+        </StackPanel>
+        <Image Name="AppIcon" Source="Assets/StoreLogo.scale-400.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" MinWidth="16" MaxWidth="16" Width="16" MinHeight="16" MaxHeight="16" Height="16" Margin="12,8,0,0"/>
+        <Grid x:Name="AppTitleBar" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="32" />
+    </Grid>
+</Page>
