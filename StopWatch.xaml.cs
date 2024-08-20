@@ -361,7 +361,7 @@ namespace Clock
                     ListFlag.HorizontalAlignment = HorizontalAlignment.Right;
                 }
                 SetFontSize();
-                GridTime.Margin = new Thickness(0, 48, 0, 12);
+                GridTime.Margin = new Thickness(0, 48, 0, 72);
             }
             else if (ActualHeight - 60 - 32 <= 200 && ActualWidth <= 680)
             {
@@ -387,7 +387,7 @@ namespace Clock
                 ListFlag.HorizontalAlignment = HorizontalAlignment.Stretch;
                 ListFlag.VerticalAlignment = VerticalAlignment.Stretch;
                 ListFlag.Width = 300;
-                GridTime.Margin = new Thickness(0, 48, 0, 12);
+                GridTime.Margin = new Thickness(0, 48, 0, 72);
             }
             else
             {
@@ -400,16 +400,7 @@ namespace Clock
                 ListFlag.HorizontalAlignment = HorizontalAlignment.Right;
                 ListFlag.VerticalAlignment = VerticalAlignment.Stretch;
                 SetFontSize();
-                GridTime.Margin = new Thickness(0, 32 + TimeDisplay.FontSize / 10.0, 280, 60);
-            }
-
-            if (isFlagPaneOpen)
-            {
-                ListFlag.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                //ListFlag.Visibility = Visibility.Collapsed;
+                GridTime.Margin = new Thickness(0, 32 + TimeDisplay.FontSize / 10.0, 280, 72);
             }
         }
     }
