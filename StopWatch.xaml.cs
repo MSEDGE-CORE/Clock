@@ -19,6 +19,7 @@ namespace Clock
     public sealed partial class StopWatch : Page
     {
         DispatcherTimer Timer1;
+        bool isFlagPaneOpen = true;
 
         public StopWatch()
         {
@@ -226,6 +227,19 @@ namespace Clock
 
         int Minute = 0, Second = 0, MSecond = 0;
         string s0 = "", sMinute = "00", sSecond = "00", sMSecond = "00";
+
+        private void StopWatchFlagPaneToggle_Click(object sender, RoutedEventArgs e)
+        {
+            isFlagPaneOpen = (bool)StopWatchFlagPaneToggle.IsChecked;
+            Page_SizeChanged();
+
+            if(isFlagPaneOpen)
+                ListFlag.ItemsSource = (Application.Current as App).SwFlagList;
+            else
+                ListFlag.ItemsSource = null;
+
+        }
+
         private void GetHMS(long NowTicks = 0)
         {
             if (NowTicks <= 0)
@@ -266,8 +280,11 @@ namespace Clock
             string Plus = sMinute + ":" + sSecond + "." + sMSecond;
 
             (Application.Current as App).SwFlagList.Insert(0, new SwFlag_List { Num = ((Application.Current as App).SwFlagList.Count() + 1).ToString(), Total = Total, Plus = Plus });
-
+           
             Page_SizeChanged();
+            ListFlag.ItemsSource = null;
+            if(isFlagPaneOpen)
+                ListFlag.ItemsSource = (Application.Current as App).SwFlagList;
             FileStopWatch();
 
             try
@@ -325,7 +342,7 @@ namespace Clock
 
         private void Page_SizeChanged(object sender = null, SizeChangedEventArgs e = null)
         {
-            if((Application.Current as App).SwFlagList.Count() == 0)
+            if((Application.Current as App).SwFlagList.Count() == 0 || isFlagPaneOpen == false)
             {
                 RightMargin = 0;
                 GridTime.VerticalAlignment = VerticalAlignment.Center;
@@ -334,13 +351,13 @@ namespace Clock
                 if (ActualWidth <= 680)
                 {
                     ListFlag.Width = 300;
-                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + ActualHeight / 2, 0, 0);
+                    ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + ActualHeight / 2, 0, 60);
                     ListFlag.HorizontalAlignment = HorizontalAlignment.Stretch;
                 }
                 else
                 {
                     ListFlag.Width = 280;
-                    ListFlag.Margin = new Thickness(0, 32, 0, 0);
+                    ListFlag.Margin = new Thickness(0, 32, -280, 60);
                     ListFlag.HorizontalAlignment = HorizontalAlignment.Right;
                 }
                 SetFontSize();
@@ -378,14 +395,21 @@ namespace Clock
                 ListFlag.Visibility = Visibility.Visible;
                 FlagSeparator.Visibility = Visibility.Visible;
                 GridTime.VerticalAlignment = VerticalAlignment.Center;
-                ListFlag.Margin = new Thickness(0, 32, 0, 0);
-                if ((ActualWidth - 280) < (ActualWidth / 2 + 48 + 12 + 24))
-                    ListFlag.Margin = new Thickness(0, 32, 0, 60);
+                ListFlag.Margin = new Thickness(0, 32, 0, 60);
                 ListFlag.Width = 280;
                 ListFlag.HorizontalAlignment = HorizontalAlignment.Right;
                 ListFlag.VerticalAlignment = VerticalAlignment.Stretch;
                 SetFontSize();
                 GridTime.Margin = new Thickness(0, 32 + TimeDisplay.FontSize / 10.0, 280, 60);
+            }
+
+            if (isFlagPaneOpen)
+            {
+                ListFlag.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                //ListFlag.Visibility = Visibility.Collapsed;
             }
         }
     }

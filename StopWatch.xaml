@@ -50,6 +50,11 @@
                         <RepositionThemeTransition/>
                     </TransitionCollection>
                 </ListView.Transitions>
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition IsStaggeringEnabled="True"/>
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:SwFlag_List">
                         <Grid>
@@ -73,5 +78,10 @@
                 <SymbolIcon Symbol="Stop" />
             </Button>
         </StackPanel>
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="48" Margin="0,0,12,12">
+            <ToggleButton CornerRadius = "48" Height="48" Width="48" Name = "StopWatchFlagPaneToggle" Click="StopWatchFlagPaneToggle_Click" ToolTipService.ToolTip="计次栏" FontFamily="HarmonyOS Sans SC" IsChecked="True">
+                <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE90D;" />
+            </ToggleButton>
+        </Grid>
     </Grid>
 </Page>
