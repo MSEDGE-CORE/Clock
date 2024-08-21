@@ -53,7 +53,7 @@
             <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="32" Background="Transparent" BorderBrush="Transparent" CornerRadius="8">
                 <Image Name="AppIcon" Source="Assets/StoreLogo.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" MinWidth="16" MaxWidth="16" Width="16" MinHeight="16" MaxHeight="16" Height="16" />
                 <Button.Flyout>
-                    <MenuFlyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
                         <MenuFlyoutItem Text="全屏" Click="MenuFullScreen_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE740;" />
