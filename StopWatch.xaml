@@ -44,7 +44,7 @@
 
         <AppBarSeparator Name="FlagSeparator"  HorizontalAlignment="Right" Margin="0,32,280,0"/>
         <Grid Name="GridFlag">
-            <ListView x:Name="ListFlag" HorizontalAlignment="Right">
+            <ListView x:Name="ListFlag" HorizontalAlignment="Right" SelectionMode="None">
                 <ListView.Transitions>
                     <TransitionCollection>
                         <RepositionThemeTransition/>

@@ -150,7 +150,7 @@ namespace Clock
 
         private void MenuFullScreen_Click(object sender, RoutedEventArgs e)
         {
-            if(ApplicationView.GetForCurrentView().IsFullScreen)
+            if(ApplicationView.GetForCurrentView().IsFullScreenMode)
             {
                 ApplicationView.GetForCurrentView().ExitFullScreenMode();
             }
@@ -166,7 +166,7 @@ namespace Clock
             {
                 ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
             }
-            else
+            else if(ContentFrame.Content.GetType() != typeof(Settings))
             {
                 ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
             }
@@ -174,7 +174,7 @@ namespace Clock
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay || ApplicationView.GetForCurrentView().IsFullScreen)
+            if (ApplicationView.GetForCurrentView().ViewMode == ApplicationViewMode.CompactOverlay || ApplicationView.GetForCurrentView().IsFullScreenMode)
             {
                 NavigationBar.Visibility = Visibility.Collapsed;
                 ContentFrame.Margin = new Thickness(0,-32,0,0);
