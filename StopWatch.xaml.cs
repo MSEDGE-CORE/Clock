@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Devices;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -342,7 +343,47 @@ namespace Clock
 
         private void Page_SizeChanged(object sender = null, SizeChangedEventArgs e = null)
         {
-            if((Application.Current as App).SwFlagList.Count() == 0 || isFlagPaneOpen == false)
+            if (ActualHeight <= 240 || ActualWidth <= 400)
+            {
+                SwControls.Visibility = Visibility.Collapsed;
+                StopWatchFlagPaneToggle.Visibility = Visibility.Collapsed;
+                ListFlag.ItemsSource = null;
+
+                if (ActualWidth > 0 && ActualHeight > 0)
+                    TimeDisplay.FontSize = (ActualWidth / 7 > ActualHeight / 3) ? ActualHeight / 3 : ActualWidth / 7;
+                TextHour.FontSize = TimeDisplay.FontSize;
+                TextMinute.FontSize = TimeDisplay.FontSize;
+                TextSecond.FontSize = TimeDisplay.FontSize;
+                TextMSecond.FontSize = TimeDisplay.FontSize;
+                GridHour.Height = TimeDisplay.FontSize * 1.2;
+                GridMinute.Height = TimeDisplay.FontSize * 1.2;
+                GridSecond.Height = TimeDisplay.FontSize * 1.2;
+                GridMSecond.Height = TimeDisplay.FontSize * 1.2;
+
+                TextH1.FontSize = TextH2.FontSize = TextH3.FontSize = 10;
+                TextH1.Margin = new Thickness(4, 0, 6, TimeDisplay.FontSize / 2.0 - 08);
+                TextH2.Margin = new Thickness(4, 0, 6, TimeDisplay.FontSize / 2.0 - 08);
+                TextH3.Margin = new Thickness(4, 0, 6, TimeDisplay.FontSize / 2.0 - 08);
+                GridTime.Margin = new Thickness(0, 16 + TimeDisplay.FontSize / 10.0, 0, -16);
+
+                RightMargin = 0;
+                GridTime.VerticalAlignment = VerticalAlignment.Center;
+                ListFlag.Visibility = Visibility.Visible;
+                FlagSeparator.Visibility = Visibility.Collapsed;
+                ListFlag.Width = 300;
+                ListFlag.Margin = new Thickness(0, TimeDisplay.FontSize * 1.2 + ActualHeight / 2, 0, 60);
+                ListFlag.HorizontalAlignment = HorizontalAlignment.Stretch;
+
+                return;
+            }
+            else
+            {
+                SwControls.Visibility = Visibility.Visible;
+                StopWatchFlagPaneToggle.Visibility = Visibility.Visible;
+                ListFlag.ItemsSource = (Application.Current as App).SwFlagList;
+            }
+
+            if ((Application.Current as App).SwFlagList.Count() == 0 || isFlagPaneOpen == false)
             {
                 RightMargin = 0;
                 GridTime.VerticalAlignment = VerticalAlignment.Center;

@@ -37,11 +37,11 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" >
-            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "48" Height="48" Width="48" Name = "TimerStartButton" Click="TimerStartButton_Click" ToolTipService.ToolTip="开始" FontFamily="HarmonyOS Sans SC">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" Name="TimerControls" >
+            <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "48" Height="48" Width="48" Name = "TimerStartButton" Margin = "0,0,12,0" Click="TimerStartButton_Click" ToolTipService.ToolTip="开始" FontFamily="HarmonyOS Sans SC">
                 <FontIcon Name = "TimerStartButtonIcon" FontFamily = "Segoe Fluent Icons" />
             </Button>
-            <Button CornerRadius = "48" Height="48" Width="48" Name = "TimerEditButton" Margin = "12,0,12,0" Click="TimerEditButton_Click" ToolTipService.ToolTip="编辑" FontFamily="HarmonyOS Sans SC">
+            <Button CornerRadius = "48" Height="48" Width="48" Name = "TimerEditButton" Margin = "0,0,12,0" Click="TimerEditButton_Click" ToolTipService.ToolTip="编辑" FontFamily="HarmonyOS Sans SC">
                 <SymbolIcon Symbol="Edit" />
             </Button>
             <Button CornerRadius = "48" Height="48" Width="48" Name = "TimerStopButton" Click="TimerStopButton_Click" ToolTipService.ToolTip="停止" FontFamily="HarmonyOS Sans SC">

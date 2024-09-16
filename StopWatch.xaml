@@ -67,7 +67,7 @@
             </ListView>
         </Grid>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" >
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="48" Margin="0,0,0,12" Name="SwControls">
             <Button Style="{StaticResource AccentButtonStyle}" CornerRadius = "48" Height="48" Width="48" Name = "StopWatchStartButton" Click="StopWatchStartButton_Click" ToolTipService.ToolTip="开始" FontFamily="HarmonyOS Sans SC">
                 <FontIcon Name = "StopWatchStartButtonIcon" FontFamily = "Segoe Fluent Icons" />
             </Button>

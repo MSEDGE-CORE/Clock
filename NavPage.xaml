@@ -11,7 +11,7 @@
     SizeChanged="Page_SizeChanged">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid HorizontalAlignment="Stretch" MinWidth="360">
+        <Grid HorizontalAlignment="Stretch">
             <Frame Name="ContentFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,68"/>
             <Grid Name="NavigationBar">
                 <Button Background="Transparent" IsEnabled="False" CornerRadius="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="70" Margin="-2,0,-2,-2"/>
